@@ -24,12 +24,10 @@ npm test -- --coverage
 
 I worked in this order, and the git history follows it:
 
-<<<<<<< HEAD
 1. **Wrote tests first** for the existing behaviour and for the Conjured requirement. The Conjured tests failed on the old code, which confirmed the bug.
 2. **Refactored `updateQuality()`** so each item type has its own small method instead of one giant block of nested ifs.
 3. **Fixed Conjured items** so they degrade twice as fast as normal ones.
 4. **Removed the Mocha tests** so there is only one test runner (Jest) and `npm test` runs it directly.
-=======
 1. **Wrote tests first** for the existing behaviour and for the Conjured requirement. The Conjured tests failed on the old code, which confirmed the bug. Upon checking, I realized that the old test code was made to failed so I wrote 23 new test cases which will check all the rules of the items.
 2. **Refactored `updateQuality()`** so each item type has its own small method instead of one giant block of nested ifs which makes the code messy making it difficult to understand for developers.
 3. **Fixed Conjured items** so they degrade twice as fast as normal ones.
@@ -47,7 +45,6 @@ All the code is in `TypeScript/app/gilded-rose.ts`.
 - Item names and the min/max quality are constants, so there are no magic strings or numbers.
 
 I did **not** change the `Item` class, since the instructions say it belongs to the goblin.
-=======
 - `updateQuality()` loops over the items, skips Sulfuras, works out the new quality, and reduces `sellIn` by one.
 - `getNewQuality()` picks the right rule based on the item name.
 - One small method per item type: `updateNormalItem`, `updateAgedBrie`, `updateBackstagePass`, `updateConjuredItem`.
@@ -61,9 +58,7 @@ I did **not** change the `Item` class, since the instructions say it belongs to 
 
 The requirements left a few things open, so I made these calls (they are also written as comments in the code):
 
-=======
 - Any item if gots the quality in negative or exceeds 50(excepts Sulfuras), to prevent it, created a `QualityChecker()`.
->>>>>>> d3b10e0 (Updated the Readme.md file for better explanation)
 - An item counts as **expired when `sellIn <= 0`** at the time of the update.
 - **Any item whose name starts with "Conjured"** is treated as a conjured item.
 - Conjured items lose **2 quality per day**, and **4 per day** after the sell-by date (twice the normal rate).
@@ -95,10 +90,10 @@ I ran `npm test -- --coverage` before and after my changes.
 **Before:** the only test was the placeholder from the template (it expects the item name to be `fixme`), so it failed. It also ran just one item through the old code, which is why coverage was only around 68%. Lines 30-52 of the original `updateQuality()` were never executed.
 
 ![Coverage before](/GildedRose-Refactoring-Kata/TypeScript/coverage-before.png)
-
+![Coverage before](coverage-before.png)
 **After:** 23 tests cover every item type and every boundary, and every statement, branch, function and line is covered.
-
+![Coverage after](coverage-after.png)
 ![Coverage after](/GildedRose-Refactoring-Kata/TypeScript/coverage-after.png)
 
 ## Things I would do with more time
-- Move each item type into its own strategy class, so adding a new type doesn't mean editing existing code.=======
+- Move each item type into its own strategy class, so adding a new type doesn't mean editing existing code.
