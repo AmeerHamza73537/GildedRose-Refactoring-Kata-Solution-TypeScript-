@@ -89,11 +89,11 @@ I ran `npm test -- --coverage` before and after my changes.
 
 **Before:** the only test was the placeholder from the template (it expects the item name to be `fixme`), so it failed. It also ran just one item through the old code, which is why coverage was only around 68%. Lines 30-52 of the original `updateQuality()` were never executed.
 
-![Coverage before](/GildedRose-Refactoring-Kata/TypeScript/coverage-before.png)
 ![Coverage before](coverage-before.png)
+
 **After:** 23 tests cover every item type and every boundary, and every statement, branch, function and line is covered.
+
 ![Coverage after](coverage-after.png)
-![Coverage after](/GildedRose-Refactoring-Kata/TypeScript/coverage-after.png)
 
 ## Things I would do with more time
 - Move each item type into its own strategy class, so adding a new type doesn't mean editing existing code.
