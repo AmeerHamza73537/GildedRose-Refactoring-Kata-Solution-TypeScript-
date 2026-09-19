@@ -34,13 +34,11 @@ I worked in this order, and the git history follows it:
 2. **Refactored `updateQuality()`** so each item type has its own small method instead of one giant block of nested ifs which makes the code messy making it difficult to understand for developers.
 3. **Fixed Conjured items** so they degrade twice as fast as normal ones.
 4. **Removed the Mocha tests** so there is only one test runner (Jest) and that can be tested by running `npm run test:jest:watch`.
->>>>>>> d3b10e0 (Updated the Readme.md file for better explanation)
 
 ## How the code is structured
 
 All the code is in `TypeScript/app/gilded-rose.ts`.
 
-<<<<<<< HEAD
 - `updateQuality()` loops over the items, skips Sulfuras, works out the new quality, clamps it, and reduces `sellIn` by one.
 - `getNewQuality()` picks the right rule based on the item name.
 - One small method per item type: `updateNormalItem`, `updateAgedBrie`, `updateBackstagePass`, `updateConjuredItem`.
@@ -58,13 +56,11 @@ I did **not** change the `Item` class, since the instructions say it belongs to 
 - Item names and the min/max quality are constants, so there are no magic strings or numbers.
 
 I did **not** change the `Item` class, since the instructions say it belongs to the goblin which will one-shot me.
->>>>>>> d3b10e0 (Updated the Readme.md file for better explanation)
 
 ## Assumptions
 
 The requirements left a few things open, so I made these calls (they are also written as comments in the code):
 
-<<<<<<< HEAD
 =======
 - Any item if gots the quality in negative or exceeds 50(excepts Sulfuras), to prevent it, created a `QualityChecker()`.
 >>>>>>> d3b10e0 (Updated the Readme.md file for better explanation)
@@ -98,23 +94,11 @@ I ran `npm test -- --coverage` before and after my changes.
 
 **Before:** the only test was the placeholder from the template (it expects the item name to be `fixme`), so it failed. It also ran just one item through the old code, which is why coverage was only around 68%. Lines 30-52 of the original `updateQuality()` were never executed.
 
-<<<<<<< HEAD
-**After:** 23 tests cover every item type and every boundary, and every statement, branch, function and line is covered.
-
-![Coverage before](coverage-before.png)
-![Coverage after](coverage-after.png)
-=======
 ![Coverage before](/GildedRose-Refactoring-Kata/TypeScript/coverage-before.png)
 
 **After:** 23 tests cover every item type and every boundary, and every statement, branch, function and line is covered.
 
 ![Coverage after](/GildedRose-Refactoring-Kata/TypeScript/coverage-after.png)
->>>>>>> d3b10e0 (Updated the Readme.md file for better explanation)
 
 ## Things I would do with more time
-
-- Move each item type into its own strategy class, so adding a new type doesn't mean editing existing code.
-<<<<<<< HEAD
-- Add property-based tests to check that quality always stays between 0 and 50.
-=======
->>>>>>> d3b10e0 (Updated the Readme.md file for better explanation)
+- Move each item type into its own strategy class, so adding a new type doesn't mean editing existing code.=======
